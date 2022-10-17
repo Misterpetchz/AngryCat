@@ -1,0 +1,106 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "farm.tmx",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "fileStates": {
+        "32x32 first tileset.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Cottage_Tileset.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Fences.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Grass.tsx": {
+            "scaleInDock": 0.75,
+            "scaleInEditor": 1
+        },
+        "Hills.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Outdoor.tsx": {
+            "scaleInDock": 1.5,
+            "scaleInEditor": 1
+        },
+        "Outdoor1.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Tilled Dirt.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Wooden House.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "farm.tmx": {
+            "scale": 0.5,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 800,
+                "y": 811
+            }
+        },
+        "indoor.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "mountains1.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "testTileset.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        }
+    },
+    "last.externalTilesetPath": "C:/Users/MSI/Desktop/AngryCat/map",
+    "last.imagePath": "C:/Users/MSI/Desktop/AngryCat/Assets/Tilesets",
+    "map.height": 80,
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 16,
+    "map.tileWidth": 16,
+    "map.width": 80,
+    "openFiles": [
+        "farm.tmx",
+        "Tilled Dirt.tsx",
+        "Grass.tsx",
+        "Hills.tsx",
+        "indoor.tsx",
+        "Outdoor1.tsx",
+        "mountains1.tsx"
+    ],
+    "project": "AngryCat_map.tiled-project",
+    "recentFiles": [
+        "mountains1.tsx",
+        "Outdoor1.tsx",
+        "indoor.tsx",
+        "Hills.tsx",
+        "Grass.tsx",
+        "Tilled Dirt.tsx",
+        "farm.tmx",
+        "Outdoor.tsx",
+        "Wooden House.tsx",
+        "Fences.tsx",
+        "testTileset.tsx",
+        "Cottage_Tileset.tsx"
+    ],
+    "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.spacing": 0,
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    }
+}
