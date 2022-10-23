@@ -8,4 +8,3 @@ def import_csv_layout(path):
             terrain_map.append(list(row))
         return terrain_map
 
-
