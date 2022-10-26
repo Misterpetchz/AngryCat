@@ -1,4 +1,6 @@
 from csv import reader
+from os import walk
+import pygame
 
 def import_csv_layout(path):
     terrain_map = []
@@ -7,4 +9,3 @@ def import_csv_layout(path):
         for row in layout:
             terrain_map.append(list(row))
         return terrain_map
-

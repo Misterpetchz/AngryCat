@@ -30,12 +30,12 @@ class Level:
                         x = col_index * TILESIZE
                         y = row_index * TILESIZE
                         if style == 'boundary':
-                            Tile((x,y),[self.visible_sprites,self.obstacle_sprites], 'invisible')
+                            Tile((x,y),[self.obstacle_sprites], 'invisible')
         #       if col == 'x':
         #            Tile((x, y),[self.visible_sprites,self.obstacle_sprites])
         #        if col == 'p':
         #            self.player = Player((x, y),[self.visible_sprites],self.obstacle_sprites)
-        self.player = Player((500,400),[self.visible_sprites],self.obstacle_sprites)
+        self.player = Player((1000,850),[self.visible_sprites],self.obstacle_sprites)
 
     def run(self):
         # update and draw the game
