@@ -17,7 +17,9 @@ class Player(pygame.sprite.Sprite):
 
 		self.obstacle_sprites = obstacle_sprites
 
-
+	def import_player_asset(self):
+		character_path = '../'
+		self.animations = {}
 
 	def input(self):
 		keys = pygame.key.get_pressed()
@@ -40,11 +42,13 @@ class Player(pygame.sprite.Sprite):
 		#attack input
 		if keys[pygame.K_SPACE] and not self.attacking:
 			self.attacking = True
+			self.attack_time = pygame.time.get_ticks()
 			print('attack')
 
 		#skill input
 		if keys[pygame.K_LCTRL] and not self.attacking:
 			self.attacking = True
+			self.attack_time = pygame.time.get_ticks()
 			print('skill')
 
 	def move(self, speed):
@@ -77,6 +81,11 @@ class Player(pygame.sprite.Sprite):
 	def cooldowns(self):
 		current_time = pygame.time.get_ticks()
 
+		if self.attack_time:
+			if current_time - self.attack_time >= self.attack_cooldown:
+				self.attacking = False
+
 	def update(self):
 		self.input()
+		self.cooldowns()
 		self.move(self.speed)
