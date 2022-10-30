@@ -6,5 +6,5 @@ TILESIZE = 64
 
 #weapons 
 weapon_data = {
-    'sword' : {'cooldown' : 100, 'damage' : 15 ,'graphic' : '../Assets/player'}
+    'excalibur' : {'cooldown' : 100, 'damage' : 15 ,'graphic' : '../Assets/weapon/full-up.png'}
 }
