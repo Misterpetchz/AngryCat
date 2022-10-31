@@ -1,4 +1,5 @@
 import pygame
+from player import Player
 
 class Weapon(pygame.sprite.Sprite):
     def __init__(self,player,groups):
@@ -11,9 +12,9 @@ class Weapon(pygame.sprite.Sprite):
 
         #placement
         if direction == 'right':
-            self.rect = self.image.get_rect(midleft = player.rect.midright + pygame.math.Vector2(0,4))
+            self.rect = self.image.get_rect(midleft = player.rect.midright + pygame.math.Vector2(0,32))
         elif direction == 'left':
-            self.rect = self.image.get_rect(midright = player.rect.midleft + pygame.math.Vector2(0,4))
+            self.rect = self.image.get_rect(midright = player.rect.midleft + pygame.math.Vector2(0,32))
         elif direction == 'down':
             self.rect = self.image.get_rect(midtop = player.rect.midbottom) #+ pygame.math.Vector2(0,0))    
 

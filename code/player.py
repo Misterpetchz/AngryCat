@@ -165,4 +165,5 @@ class Player(pygame.sprite.Sprite):
 		self.cooldowns()
 		self.get_status()
 		self.animate()
+		self.image = pygame.transform.scale(self.image, (int(self.image.get_width() * 2), int(self.image.get_height() * 2)))
 		self.move(self.speed)
