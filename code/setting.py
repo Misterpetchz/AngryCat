@@ -25,7 +25,11 @@ UI_BORDER_COLOR_ACTIVE = 'gold'
 
 #weapons 
 weapon_data = {
-    'excalibur' : {'cooldown' : 100, 'damage' : 15 ,'graphic' : '../Assets/weapon/excalibur/full-up.png'}}
+    'excalibur' : {'cooldown' : 100, 'damage' : 15 ,'graphic' : '../Assets/weapon/excalibur/full-up.png'}
+    }
 
 #skill
-magic_data = {}
+magic_data = {
+    'crescent' : {'strength' : 5, 'cost' : 20, 'graphic': '../Assets/particles//crescent/crescent.png'},
+    'fireball' : {'strength' : 15, 'cost' : 30, 'graphic' : '../Assets/particles/fireball/fireball.png'}
+}
