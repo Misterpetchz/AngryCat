@@ -7,6 +7,7 @@ from debug import debug
 from support import *
 from weapon import Weapon
 from ui import UI
+from enemy import Enemy
 
 class Level:
     def __init__(self) :
@@ -29,7 +30,8 @@ class Level:
 
     def create_map(self):
         layouts = {
-            'boundary' : import_csv_layout('../map/new1_floorblock.csv')
+            'boundary' : import_csv_layout('../map/new1_floorblock.csv'),
+            'entities' : import_csv_layout('../map/new1_entities.csv')
         }
 
         for style,layout in layouts.items():
@@ -40,17 +42,19 @@ class Level:
                         y = row_index * TILESIZE
                         if style == 'boundary':
                             Tile((x,y),[self.obstacle_sprites], 'invisible')
-        #       if col == 'x':
-        #            Tile((x, y),[self.visible_sprites,self.obstacle_sprites])
-        #        if col == 'p':
-        #            self.player = Player((x, y),[self.visible_sprites],self.obstacle_sprites)
-        self.player = Player(
-            (1000,850),
-            [self.visible_sprites],
-            self.obstacle_sprites,
-            self.create_attack,
-            self.destroy_attack,
-            self.create_magic)
+                        
+                        if style == 'entities':
+                            if col == '394':
+                                self.player = Player(
+                                    (x,y),
+                                    [self.visible_sprites],
+                                    self.obstacle_sprites,
+                                    self.create_attack,
+                                    self.destroy_attack,
+                                    self.create_magic)
+                            else:
+                                Enemy('monster',(x,y),[self.visible_sprites])
+        
 
     def create_attack(self):
         self.current_attack = Weapon(self.player,[self.visible_sprites])
