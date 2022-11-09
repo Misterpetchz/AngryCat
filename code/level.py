@@ -31,7 +31,7 @@ class Level:
     def create_map(self):
         layouts = {
             'boundary' : import_csv_layout('../map/new1_floorblock.csv'),
-            'entities' : import_csv_layout('../map/new1_entities.csv')
+            'entities' : import_csv_layout('../map/true1_entities.csv')
         }
 
         for style,layout in layouts.items():
@@ -53,7 +53,10 @@ class Level:
                                     self.destroy_attack,
                                     self.create_magic)
                             else:
-                                Enemy('maggot',(x,y),[self.visible_sprites])
+                                if col == '390' : monster_name = 'beetle'
+                                elif col == '391' : monster_name = 'maggot'
+                                else : monster_name = 'wyrm'
+                                Enemy(monster_name,(x,y),[self.visible_sprites],self.obstacle_sprites)
         
 
     def create_attack(self):
@@ -73,6 +76,7 @@ class Level:
         # update and draw the game
         self.visible_sprites.custom_draw(self.player)
         self.visible_sprites.update()
+        self.visible_sprites.enemy_update(self.player)
         self.ui.display(self.player)
         
 
@@ -90,6 +94,7 @@ class YSortCameraGroup(pygame.sprite.Group):
         self.floor_surf = pygame.image.load('../Assets/tilemap/castlefarm.png').convert()
         self.floor_rect = self.floor_surf.get_rect(topleft = (0,0))
 
+   
     def custom_draw(self,player):
 
         #getting the offset
@@ -104,3 +109,9 @@ class YSortCameraGroup(pygame.sprite.Group):
         for sprite in sorted(self.sprites(),key = lambda sprite: sprite.rect.centery):
             offset_pos  = sprite.rect.topleft - self.offset
             self.display_surface.blit(sprite.image,offset_pos)
+
+
+    def enemy_update(self,player):
+        enemy_sprites = [sprite for sprite in self.sprites() if hasattr(sprite, 'sprite_type') and sprite.sprite_type == 'enemy']
+        for enemy in enemy_sprites:
+            enemy.enemy_update(player)
