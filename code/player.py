@@ -32,7 +32,6 @@ class Player(Entity):
 		self.can_switch_weapon = True
 		#self.weapon_switch_time = None
 		
-
 		#skill
 		self.create_magic = create_magic
 		self.magic_index = 0
@@ -41,12 +40,16 @@ class Player(Entity):
 		self.magic_switch_time = None
 
 		#stats
-		self.stats = {'health' : 100, 'energy' : 60, 'attack' : 10, 'magic' : 4, 'speed' : 5}
+		self.stats = {'health' : 1000, 'energy' : 60, 'attack' : 10, 'magic' : 4, 'speed' : 5}
 		self.health = self.stats['health'] 
 		self.energy = self.stats['energy'] 
 		self.exp = 123
 		self.speed = self.stats['speed']
 
+		#damage timer
+		self.vulnerable = True
+		self.hurt_time = None
+		self.invulnerability_duration = 500
 
 	def import_player_asset(self):
 		character_path = '../Assets/player/'
@@ -126,18 +129,21 @@ class Player(Entity):
 			if 'attack' in self.status:
 				self.status = self.status.replace('_attack' ,'')
 
-
 	def cooldowns(self):
 		current_time = pygame.time.get_ticks()
 
 		if self.attack_time:
-			if current_time - self.attack_time >= self.attack_cooldown:
+			if current_time - self.attack_time >= self.attack_cooldown + weapon_data[self.weapon]['cooldown']:
 				self.attacking = False
 				self.destroy_attack()
 
 		if not self.can_switch_magic:
 			if current_time - self.magic_switch_time >= self.switch_duration_cooldown:
 				self.can_switch_magic = True
+
+		if not self.vulnerable:
+			if current_time - self.hurt_time >= self.invulnerability_duration:
+				self.vulnerable = True
 
 	def animate(self):
 		animation = self.animations[self.status]
@@ -150,6 +156,18 @@ class Player(Entity):
 		#set the image
 		self.image = animation[int(self.frame_index)]
 		self.rect = self.image.get_rect(center = self.hitbox.center)
+
+		#flicker
+		if not self.vulnerable:
+			alpha = self.wave_value()
+			self.image.set_alpha(alpha)
+		else:
+			self.image.set_alpha(255)
+
+	def get_full_weapon_damage(self):
+		base_damage = self.stats['attack']
+		weapon_damage = weapon_data[self.weapon]['damage']
+		return base_damage + weapon_damage
 
 	def update(self):
 		self.input()
