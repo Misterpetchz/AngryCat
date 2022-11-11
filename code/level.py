@@ -8,6 +8,7 @@ from support import *
 from weapon import Weapon
 from ui import UI
 from enemy import Enemy
+from particles import AnimationPlayer
 
 class Level:
     def __init__(self) :
@@ -29,6 +30,9 @@ class Level:
 
         #user interface
         self.ui = UI()
+
+        #particles
+        self.animation_player = AnimationPlayer()
 
     def create_map(self):
         layouts = {

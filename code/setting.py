@@ -38,5 +38,5 @@ magic_data = {
 monster_data = {
     'beetle' : {'health' : 100 ,'exp' : 50, 'damage' : 8, 'attack_type' : 'slash', 'attack_sound' : '../audio/attack/slash.wav','speed' : 3, 'resistance' : 3, 'attack_radius' : 80, 'notice_radius' : 360 },
     'maggot' : {'health' : 70 ,'exp' : 45, 'damage' : 11, 'attack_type' : 'venom', 'attack_sound' : '../audio/attack/venom.wav', 'speed' : 3, 'resistance' : 3, 'attack_radius' : 100, 'notice_radius' : 360  },
-    'wyrm' : {'health' : 250 ,'exp' : 250, 'damage' : 30, 'attack_type' : 'fire', 'attack_sound' : '../audio/attack/fire.wav','speed' : 2, 'resistance' : 120, 'attack_radius' : 80, 'notice_radius' : 360  }
+    'wyrm' : {'health' : 250 ,'exp' : 250, 'damage' : 30, 'attack_type' : 'thunder', 'attack_sound' : '../audio/attack/fire.wav','speed' : 2, 'resistance' : 120, 'attack_radius' : 80, 'notice_radius' : 360  }
 }
