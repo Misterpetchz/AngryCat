@@ -5,6 +5,10 @@ from random import randint
 class MagicPlayer:
     def __init__(self,animation_player):
         self.animation_player = animation_player
+        self.sounds = {
+            'crescent' : pygame.mixer.Sound('../audio/ching_crescent.wav'),
+            'fireball' : pygame.mixer.Sound('../audio/Fireball.wav')
+        }
 
     # def heal(self,player,strength,cost,groups):
     #   if player.energy >= cost :
@@ -18,6 +22,7 @@ class MagicPlayer:
     def crescent(self,player,cost,groups):
         if player.energy >= cost:
             player.energy -= cost
+            self.sounds['crescent'].play()
 
             if player.status.split('_')[0] == 'right': direction = pygame.math.Vector2(1,0)
             elif player.status.split('_')[0] == 'left': direction = pygame.math.Vector2(-1,0)
@@ -40,6 +45,7 @@ class MagicPlayer:
     def fireball(self,player,cost,groups):
         if player.energy >= cost:
             player.energy -= cost
+            self.sounds['fireball'].play()
 
             if player.status.split('_')[0] == 'right': direction = pygame.math.Vector2(1,0)
             elif player.status.split('_')[0] == 'left': direction = pygame.math.Vector2(-1,0)
