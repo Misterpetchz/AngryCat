@@ -9,6 +9,8 @@ class Game:
 		pygame.init()
 		self.screen = pygame.display.set_mode((WIDTH,HEIGHT))
 		pygame.display.set_caption('AngryCat')
+		gameIcon = pygame.image.load('../Assets/icon/angryCat.jfif')
+		pygame.display.set_icon(gameIcon)
 		self.clock = pygame.time.Clock()
 
 		self.level = Level()
