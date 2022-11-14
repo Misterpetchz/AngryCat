@@ -36,7 +36,7 @@ UPGRADE_BG_COLOR_SELECTED = '#EEEEEE'
 
 #weapons 
 weapon_data = {
-    'excalibur' : {'cooldown' : 100, 'damage' : 15 ,'graphic' : '../Assets/weapon/excalibur/full-up.png'}
+    'blade' : {'cooldown' : 100, 'damage' : 15 ,'graphic' : '../Assets/weapon/blade/full.png'}
     }
 
 #skill
