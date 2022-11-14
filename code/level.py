@@ -1,5 +1,6 @@
 from re import X
 import pygame
+import random
 from setting import *
 from tile import Tile
 from player import Player
@@ -76,6 +77,7 @@ class Level:
                                     self.trigger_death_particles,
                                     self.add_exp)
         
+
     def create_attack(self):
 
         self.current_attack = Weapon(self.player,[self.visible_sprites,self.attack_sprites])
@@ -133,10 +135,8 @@ class Level:
             self.visible_sprites.update()
             self.visible_sprites.enemy_update(self.player)
             self.player_attack_logic()
-            
         
-        
-        
+      
 
 class YSortCameraGroup(pygame.sprite.Group):
     def __init__(self):

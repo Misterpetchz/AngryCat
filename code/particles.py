@@ -4,6 +4,7 @@ from random import choice
 
 class AnimationPlayer:
     def __init__(self):
+
         self.frames = {
             #magic
             'crescent' : import_folder('../Assets/particles/crescent/frames'),
@@ -18,8 +19,9 @@ class AnimationPlayer:
             'wyrm' : import_folder('../Assets/particles/shatter'),
             'beetle' : import_folder('../Assets/particles/nova'),
             'maggot' : import_folder('../Assets/particles/dissolve')
-        }
 
+        }
+ 
     def reflect_images(self, frames):
         new_frames = []
 

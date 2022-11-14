@@ -1,57 +1,46 @@
 import pygame, sys
 from setting import *
 from level import Level
-import button
-
-#setup
-screen = pygame.display.set_mode((WIDTH,HEIGHT))
-pygame.display.set_caption('AngryCat')
-gameIcon = pygame.image.load('../Assets/icon/angryCat.jfif')
-pygame.display.set_icon(gameIcon)
-
-
-#button
-homepage_start_button = pygame.image.load('../Assets/button/start1.png')
-homepage_score_button = pygame.image.load('../Assets/button/score.png')
-homepage_exit_button = pygame.image.load('../Assets/button/exit.png')
-
-homepage_start = button.Button(WIDTH // 2 - 130, HEIGHT // 2 - 120, homepage_start_button,1)
-homepage_score = button.Button(WIDTH // 2 - 120, HEIGHT // 2 - 100, homepage_score_button,1)
-homepage_exit = button.Button(WIDTH // 2 - 110, HEIGHT // 2 - 180, homepage_exit_button,1)
-
+import json
 
 class Game:
 	def __init__(self):
 		  
 		# general setup
 		pygame.init()
+		self.screen = pygame.display.set_mode((WIDTH,HEIGHT))
+		pygame.display.set_caption('AngryCat')
 		self.clock = pygame.time.Clock()
 		self.level = Level()
-		self.Homepage.homepage_active = True
+
 		#sound
+		self.image_screen = pygame.image.load('../Assets/start_menu/screen.png')
+		self.image_score =  pygame.image.load
+		self.font = pygame.font.Font(UI_FONT, 10)
+		self.rect = self.image_screen.get_rect(topleft = (0,0))
 		main_sound = pygame.mixer.Sound('../audio/main.wav')
 		main_sound.set_volume(0.5)
 		main_sound.play(loops = -1)
+		self.text_surf = self.font.render('65010773 Petch Tariyacharoen', False, TEXT_COLOR)
+		self.text_surf = self.text_surf.get_rect(center = ((1280 // 2), 700))
 		
 		
 	
 	def run(self) :
 			while True:
-					for event in pygame.event.get():
-						if event.type == pygame.QUIT:
-							pygame.quit()
-							sys.exit()
-						if event.type == pygame.KEYDOWN:
-							if event.key == pygame.K_m:
-								self.level.toggle_menu()
+				
+				for event in pygame.event.get():
+					if event.type == pygame.QUIT:
+						pygame.quit()
+						sys.exit()
+					if event.type == pygame.KEYDOWN:
+						if event.key == pygame.K_m:
+							self.level.toggle_menu()
 
-					screen.fill(WATER_COLOR )
+					self.screen.fill(WATER_COLOR)
 					self.level.run()
 					pygame.display.update()
 					self.clock.tick(FPS)
-
-
-
 
 	
 class Homepage:
