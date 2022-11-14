@@ -42,26 +42,6 @@ class Game:
 					pygame.display.update()
 					self.clock.tick(FPS)
 
-	
-class Homepage:
-	def __init__(self):
-		pygame.init()
-		self.clock = pygame.time.Clock()
-
-		self.start_menu = pygame.image.load('../Assets/start_menu/start.png')
-		self.start_menu = pygame.transform.scale(self.start_menu,(WIDTH,HEIGHT))
-		
-	def run(self):
-		while True:
-			for event in pygame.event.get():
-				if event.type == pygame.QUIT:
-					pygame.quit()
-					sys.exit()
-			
-			pygame.display.update()
-			self.clock.tick(FPS)
-			
-
 if __name__ == '__main__':
 	game = Game()
 	game.run()
