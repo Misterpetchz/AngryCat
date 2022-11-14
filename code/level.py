@@ -1,5 +1,5 @@
 import pygame 
-from setting import *
+from settings import *
 from tile import Tile
 from player import Player
 from debug import debug
@@ -42,8 +42,9 @@ class Level:
 	def create_map(self):
 		layouts = {
 			'boundary': import_csv_layout('../map/finally_floorblock.csv'),
-			'entities': import_csv_layout('../map/new1_entities.csv')
+			'entities': import_csv_layout('../map/true1_entities.csv')
 		}
+
 		for style,layout in layouts.items():
 			for row_index,row in enumerate(layout):
 				for col_index, col in enumerate(row):
@@ -52,7 +53,7 @@ class Level:
 						y = row_index * TILESIZE
 						if style == 'boundary':
 							Tile((x,y),[self.obstacle_sprites],'invisible')
-						
+
 						if style == 'entities':
 							if col == '394':
 								self.player = Player(
@@ -64,7 +65,7 @@ class Level:
 									self.create_magic)
 							else:
 								if col == '390': monster_name = 'beetle'
-								elif col == '394': monster_name = 'maggot'
+								elif col == '391': monster_name = 'maggot'
 								else: monster_name = 'wyrm'
 								Enemy(
 									monster_name,
@@ -80,11 +81,12 @@ class Level:
 		self.current_attack = Weapon(self.player,[self.visible_sprites,self.attack_sprites])
 
 	def create_magic(self,style,strength,cost):
-		if style == 'heal':
-			self.magic_player.heal(self.player,strength,cost,[self.visible_sprites])
 
-		if style == 'flame':
-			self.magic_player.flame(self.player,cost,[self.visible_sprites,self.attack_sprites])
+		if style == 'crescent':
+			self.magic_player.crescent(self.player,cost,[self.visible_sprites,self.attack_sprites])
+
+		if style == 'fireball':
+					self.magic_player.fireball(self.player,cost,[self.visible_sprites,self.attack_sprites])	
 
 	def destroy_attack(self):
 		if self.current_attack:
@@ -97,13 +99,7 @@ class Level:
 				collision_sprites = pygame.sprite.spritecollide(attack_sprite,self.attackable_sprites,False)
 				if collision_sprites:
 					for target_sprite in collision_sprites:
-						if target_sprite.sprite_type == 'grass':
-							pos = target_sprite.rect.center
-							offset = pygame.math.Vector2(0,75)
-							for leaf in range(randint(3,6)):
-								self.animation_player.create_grass_particles(pos - offset,[self.visible_sprites])
-							target_sprite.kill()
-						else:
+						if target_sprite.sprite_type == 'enemy':
 							target_sprite.get_damage(self.player,attack_sprite.sprite_type)
 
 	def damage_player(self,amount,attack_type):
