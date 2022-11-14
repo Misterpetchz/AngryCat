@@ -9,9 +9,8 @@ class Player(Entity):
 	def __init__(self,pos,groups,obstacle_sprites,create_attack,destroy_attack,create_magic):
 		super().__init__(groups)
 		self.image = pygame.image.load('../Assets/player/down_idle/down_idle.png').convert_alpha()
-		self.image = pygame.transform.scale(self.image, (int(self.image.get_width() * 2), int(self.image.get_height() * 2)))
 		self.rect = self.image.get_rect(topleft = pos)
-		self.hitbox = self.rect.inflate(-6,HITBOX_OFFSET['player'])
+		self.hitbox = self.rect.inflate(0,-20)
 
 		#graphics setup
 		self.import_player_asset()
@@ -55,10 +54,6 @@ class Player(Entity):
 		self.hurt_time = None
 		self.invulnerability_duration = 500
 
-		#import sound
-		self.weapon_attack_sound = pygame.mixer.Sound('../audio/sword.wav')
-		self.weapon_attack_sound.set_volume(0.4)
-
 	def import_player_asset(self):
 		character_path = '../Assets/player/'
 		self.animations = {'up': [], 'down' : [], 'left' : [], 'right': [],
@@ -97,7 +92,6 @@ class Player(Entity):
 				self.attacking = True
 				self.attack_time = pygame.time.get_ticks()
 				self.create_attack()
-				self.weapon_attack_sound.play()
 
 			#skill input
 			if keys[pygame.K_LCTRL]:
