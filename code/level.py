@@ -4,7 +4,7 @@ from tile import Tile
 from player import Player
 from debug import debug
 from support import *
-from random import choice, randint
+from random import choice, randint, random
 from weapon import Weapon
 from ui import UI
 from enemy import Enemy
@@ -18,6 +18,8 @@ class Level:
 		# get the display surface 
 		self.display_surface = pygame.display.get_surface()
 		self.game_paused = False
+		#self.x = random.choices(list(range(200,900)) ,k=1)[0]
+		#self.y = random.choices(list(range(200,900)) ,k=1)[1]
 
 		# sprite group setup
 		self.visible_sprites = YSortCameraGroup()
@@ -64,17 +66,18 @@ class Level:
 									self.destroy_attack,
 									self.create_magic)
 							else:
-								if col == '390': monster_name = 'beetle'
-								elif col == '391': monster_name = 'maggot'
-								else: monster_name = 'wyrm'
-								Enemy(
-									monster_name,
-									(x,y),
-									[self.visible_sprites,self.attackable_sprites],
-									self.obstacle_sprites,
-									self.damage_player,
-									self.trigger_death_particles,
-									self.add_exp)
+								pass
+								#if col == '390': monster_name = 'beetle'
+								#elif col == '391': monster_name = 'maggot'
+								#else: monster_name = 'wyrm'
+								#Enemy(
+								#	monster_name,
+								#	(x,y),
+								#	[self.visible_sprites,self.attackable_sprites],
+								#	self.obstacle_sprites,
+									#self.damage_player,
+								#	self.trigger_death_particles,
+									#self.add_exp)
 
 	def create_attack(self):
 		
@@ -120,6 +123,10 @@ class Level:
 	def toggle_menu(self):
 
 		self.game_paused = not self.game_paused 
+
+	# def spawn(self):
+		#if
+		
 
 	def run(self):
 		self.visible_sprites.custom_draw(self.player)
