@@ -15,7 +15,7 @@ class AnimationPlayer:
 			# attacks 
 			'thunder': import_folder('../Assets/particles/thunder'),
 			'slash': import_folder('../Assets/particles/slash'),
-			'venom': import_folder('../Assets/particles/venom'),
+			'lighting': import_folder('../Assets/particles/lighting'),
 
 			# monster deaths
 			'wyrm': import_folder('../Assets/particles/shatter'),

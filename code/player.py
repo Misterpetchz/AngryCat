@@ -54,7 +54,7 @@ class Player(Entity):
 
 		# import a sound
 		self.weapon_attack_sound = pygame.mixer.Sound('../audio/sword.wav')
-		self.weapon_attack_sound.set_volume(0.4)
+		self.weapon_attack_sound.set_volume(0.1)
 
 	def import_player_assets(self):
 		character_path = '../Assets/player/'
@@ -188,7 +188,7 @@ class Player(Entity):
 
 	def energy_recovery(self):
 		if self.energy < self.stats['energy']:
-			self.energy += 0.01 * self.stats['magic']
+			self.energy += 0.05 * self.stats['magic']
 		else:
 			self.energy = self.stats['energy']
 

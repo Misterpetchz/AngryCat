@@ -2,6 +2,7 @@ import pygame
 from settings import *
 from entity import Entity
 from support import *
+from item import Itembox
 
 class Enemy(Entity):
 	def __init__(self,monster_name,pos,groups,obstacle_sprites,damage_player,trigger_death_particles,add_exp):
@@ -39,6 +40,7 @@ class Enemy(Entity):
 		self.damage_player = damage_player
 		self.trigger_death_particles = trigger_death_particles
 		self.add_exp = add_exp
+		#self.item = Itembox()
 
 		# invincibility timer
 		self.vulnerable = True
@@ -134,10 +136,13 @@ class Enemy(Entity):
 
 	def check_death(self):
 		if self.health <= 0:
+			#self.item()
 			self.kill()
 			self.trigger_death_particles(self.rect.center,self.monster_name)
 			self.add_exp(self.exp)
 			self.death_sound.play()
+
+			
 
 	def hit_reaction(self):
 		if not self.vulnerable:

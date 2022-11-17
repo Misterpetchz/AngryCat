@@ -13,7 +13,7 @@ BAR_HEIGHT = 20
 HEALTH_BAR_WIDTH = 200
 ENERGY_BAR_WIDTH = 140
 ITEM_BOX_SIZE = 80
-UI_FONT_SIZE = 10
+UI_FONT_SIZE = 20
 UI_FONT = '../Assets/font/Winkle-Regular.ttf'
 
 # general colors
@@ -44,7 +44,7 @@ magic_data = {
 
 # enemy
 monster_data = {
-	'beetle': {'health': 100,'exp':50,'damage':8,'attack_type': 'slash', 'attack_sound':'../audio/attack/slash.wav', 'speed': 3, 'resistance': 3, 'attack_radius': 80, 'notice_radius': 360},
-	'maggot': {'health': 300,'exp':45,'damage':11,'attack_type': 'venom',  'attack_sound':'../audio/attack/venom.wav','speed': 2, 'resistance': 3, 'attack_radius': 120, 'notice_radius': 400},
-	'wyrm': {'health': 100,'exp':250,'damage':25,'attack_type': 'thunder', 'attack_sound':'../audio/attack/fireball.wav', 'speed': 2, 'resistance': 4, 'attack_radius': 60, 'notice_radius': 350}
+	'beetle': {'health': 100,'exp':50,'damage':10,'attack_type': 'slash', 'attack_sound':'../audio/attack/slash.wav', 'speed': 3, 'resistance': 3, 'attack_radius': 80, 'notice_radius': 5000},
+	'maggot': {'health': 75,'exp':45,'damage':11,'attack_type': 'lighting',  'attack_sound':'../audio/attack/lighting.wav','speed': 2, 'resistance': 3, 'attack_radius': 120, 'notice_radius': 5000},
+	'wyrm': {'health': 250,'exp':250,'damage':25,'attack_type': 'thunder', 'attack_sound':'../audio/attack/fireball.wav', 'speed': 2, 'resistance': 4, 'attack_radius': 60, 'notice_radius': 5000}
 }
