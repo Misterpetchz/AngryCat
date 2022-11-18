@@ -2,19 +2,25 @@ import pygame
 from settings import *
 from entity import Entity
 from support import *
-from item import Itembox
+from player import Player
+from item import Items
+from random import randint
+
+
+screen = pygame.display.set_mode((WIDTH,HEIGTH))
 
 class Enemy(Entity):
-	def __init__(self,monster_name,pos,groups,obstacle_sprites,damage_player,trigger_death_particles,add_exp):
+	def __init__(self,monster_name,pos,groups,obstacle_sprites,damage_player,trigger_death_particles,add_exp,level):
 
 		# general setup
 		super().__init__(groups)
 		self.sprite_type = 'enemy'
-
+		self.level = level
 		# graphics setup
 		self.import_graphics(monster_name)
 		self.status = 'idle'
 		self.image = self.animations[self.status][self.frame_index]
+		#self.player = Player()
 
 		# movement
 		self.rect = self.image.get_rect(topleft = pos)
@@ -40,7 +46,7 @@ class Enemy(Entity):
 		self.damage_player = damage_player
 		self.trigger_death_particles = trigger_death_particles
 		self.add_exp = add_exp
-		#self.item = Itembox()
+		#self.drop_items = drop_items
 
 		# invincibility timer
 		self.vulnerable = True
@@ -136,14 +142,15 @@ class Enemy(Entity):
 
 	def check_death(self):
 		if self.health <= 0:
-			#self.item()
 			self.kill()
+			percentage = randint(1,100)
+			if percentage >= 1 and percentage <= 25:
+				Items(self.rect.center,[self.level.visible_sprites,self.level.visible_item])
 			self.trigger_death_particles(self.rect.center,self.monster_name)
 			self.add_exp(self.exp)
+			self.death_sound.set_volume(0.5)
 			self.death_sound.play()
-
 			
-
 	def hit_reaction(self):
 		if not self.vulnerable:
 			self.direction *= -self.resistance
