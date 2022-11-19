@@ -111,9 +111,10 @@ class Level:
 				if pygame.sprite.collide_rect(item,self.player):
 
 					self.player.health += 25
+					if self.player.health >= self.player.stats['health']:
+						self.player.health = self.player.stats['health']
 					item.kill()
 				
-
 	def damage_player(self,amount,attack_type):
 		if self.player.vulnerable:
 			self.player.health -= amount
@@ -124,7 +125,6 @@ class Level:
 	def trigger_death_particles(self,pos,particle_type):
 
 		self.animation_player.create_particles(particle_type,pos,self.visible_sprites)
-		#drop items
 		monster_data[particle_type]['health'] += 0.5
 		monster_data[particle_type]['damage'] += 0.75
 		monster_data[particle_type]['speed'] += 0.01

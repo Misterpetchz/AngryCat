@@ -5,7 +5,7 @@ from level import Level
 from enemy import Enemy
 from player import Player
 import json
-   
+
 scoreboard = {}
 
 try:
@@ -24,7 +24,6 @@ main_sound = pygame.mixer.Sound('../audio/arcade.wav')
 main_sound.set_volume(0.5)
 main_sound.play(loops = -1)
 clock = pygame.time.Clock()
-
 
 BG = pygame.image.load('../Assets/start_menu/score.png')
 

@@ -20,7 +20,6 @@ class Enemy(Entity):
 		self.import_graphics(monster_name)
 		self.status = 'idle'
 		self.image = self.animations[self.status][self.frame_index]
-		#self.player = Player()
 
 		# movement
 		self.rect = self.image.get_rect(topleft = pos)
